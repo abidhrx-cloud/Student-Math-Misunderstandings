@@ -1,68 +1,118 @@
-Student Math Misunderstandings Detection
+# Student Math Misunderstandings Detection
 
-This project focuses on identifying the underlying misconception behind a student's incorrect answer in mathematics multiple-choice questions using machine learning techniques.
+An end-to-end machine learning project focused on identifying conceptual misconceptions behind incorrect student responses in mathematics multiple-choice assessments.
 
-Problem Statement
+---
 
-Students often select incorrect answers due to specific conceptual misunderstandings rather than random guessing.
+## Overview
 
-The objective of this project is to:
+Incorrect answers in mathematics often reflect specific misunderstandings rather than random mistakes.
 
-Identify the most probable misconception
+Detecting these misconceptions enables targeted feedback and personalized learning interventions.
 
-Predict the top 3 possible misconceptions
+This project builds a predictive system that ranks the most likely misconceptions associated with each incorrect student response.
 
-Support automated and data-driven educational feedback systems
+The system is evaluated using Mean Average Precision at 3 (MAP@3), a ranking-based metric suitable for top-k prediction tasks.
 
-This task is formulated as a multi-class classification problem evaluated using Mean Average Precision at 3 (MAP@3).
+---
 
-Dataset Description
+## Objective
 
-The dataset contains:
+- Predict the most relevant misconception for each incorrect answer
+- Generate top-3 ranked predictions per student response
+- Optimize performance using a ranking-based evaluation framework
 
-QuestionId
+---
 
-MC_Answer (selected option)
+## Dataset
 
-CorrectAnswer
+The dataset consists of structured student response records including:
 
-Student Response
+- QuestionId
+- MC_Answer
+- CorrectAnswer
+- Student Response
+- Misconception Label
 
-Misconception Label
+The task is formulated as a multi-class classification problem with ranking-based output evaluation.
 
-The goal is to correctly predict the misconception label associated with each incorrect response.
+---
 
-Methodology
-1. Exploratory Data Analysis
+## Methodology
 
-Analyzed distribution of misconception categories
+### Data Analysis
 
-Examined question-wise answer trends
+- Examined distribution of misconception labels
+- Identified imbalance across categories
+- Analyzed response patterns at question level
 
-Studied class imbalance across labels
+### Feature Engineering
 
-2. Feature Engineering
+- Encoded categorical variables
+- Created structured features from response patterns
+- Designed top-k ranking outputs
 
-Encoded categorical variables
-
-Generated structured features from answer patterns
-
-Designed ranking-based prediction outputs
-
-3. Model Development
-
-Trained a supervised multi-class classification system
-
-Generated top-3 ranked predictions per instance
-
-4. Evaluation Metric
+### Evaluation
 
 Mean Average Precision at 3 (MAP@3)
 
-Validation Performance:
-
 Validation MAP@3: 0.83
 
-Results
+---
 
-The system achieved a validation MAP@3 score of 0.83, demonstrating strong ranking performance in predicting the most relevant misconceptions.
+## Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Matplotlib
+
+---
+
+## Project Structure
+
+student-math-misunderstandings/
+
+├── notebooks/
+│   ├── EDA.ipynb
+│   ├── training.ipynb
+│   └── inference.ipynb
+│
+├── data/
+│   ├── train.csv
+│   └── test.csv
+│
+├── requirements.txt
+└── README.md
+
+---
+
+## How to Run
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Run training:
+
+python train.py
+
+---
+
+## Key Learnings
+
+- Multi-class classification
+- Implementation of MAP@K evaluation metrics
+- Ranking-based prediction systems
+- Handling imbalanced datasets
+- End-to-end ML workflow development
+
+---
+
+## Future Improvements
+
+- Improve ranking calibration
+- Enhance feature representation
+- Deploy as a web-based educational tool
+- Integrate real-time prediction capabilities
